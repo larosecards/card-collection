@@ -1,0 +1,25 @@
+<div class="card-menu" style="width: 200px;">
+    <h5>Card Menu</h5>
+    
+    <ul class="list-group list-group-flush">
+        {% include "partials/baseball_accordion.html" %}
+        {% include "partials/basketball_accordion.html" %}
+        <li class="list-group-item">
+            <!-- Football -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFootball">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFootball" aria-expanded="false" aria-controls="collapseFootball">
+                        Football
+                    </button>
+                </h2>
+                <div id="collapseFootball" class="accordion-collapse collapse" aria-labelledby="headingFootball" data-bs-parent="#cardMenuAccordion">
+                    <div class="accordion-body">
+                        Content for Football cards.
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">Category 4</li>
+        <li class="list-group-item">Category 5</li>
+    </ul>
+</div>

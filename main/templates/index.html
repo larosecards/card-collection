@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+    
+
+    <!-- Main Content Area -->
+    <div class="main-content" style="margin-left: 200px;">
+        <div class="container">
+            <h1>Welcome to LaRose Cards</h1>
+            {% if user.is_authenticated %}
+                <p>Hello, {{ user.username }}! Explore your personalized dashboard or check out the latest cards below.</p>
+            {% else %}
+                <p>Please <a href="{% url 'login' %}">log in</a> to view your dashboard or browse our collections.</p>
+            {% endif %}
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/sample1.jpg' %}" class="card-img-top" alt="Card 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 1</h5>
+                            <p class="card-text">Description for card 1.</p>
+                            <a href="#" class="btn btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/sample2.jpg' %}" class="card-img-top" alt="Card 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 2</h5>
+                            <p class="card-text">Description for card 2.</p>
+                            <a href="#" class="btn btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/sample3.jpg' %}" class="card-img-top" alt="Card 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title 3</h5>
+                            <p class="card-text">Description for card 3.</p>
+                            <a href="#" class="btn btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

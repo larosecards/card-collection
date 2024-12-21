@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LaRose Cards{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/CardsLogo.png' %}" type="image/x-icon">
+</head>
+<body class="grad-main">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg text-light transparent-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="/">
+                <img src="{% static 'images/CardsLogo.png' %}" alt="LaRose Cards Logo" width="50" height="50">
+                LaRose Cards
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link text-light">Welcome, {{ user.username }}!</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="d-flex" style="margin-top: 56px;">
+        <!-- Include the Card Menu -->
+        {% include "partials/card_menu.html" %}
+    
+        <!-- Main Content -->
+        <div class="container mt-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-3">
+        <p>&copy; 2024 LaRose Cards. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'JS/main.js' %}"></script>
+</body>
+</html>
